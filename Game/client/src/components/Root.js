@@ -7,6 +7,12 @@ export default function Root(){
 
     const inputRef = useRef(null)
 
+    function startGame(){
+        if (inputRef.current?.value){
+            
+        }
+    }
+
     return(
         <div className="container">
             <h1 className="title text-light">Write em off</h1>
@@ -18,7 +24,7 @@ export default function Root(){
             </form>
 
             <div className="start"> 
-                <Link className="Btn" to={"game"}>Begin</Link>
+                <Link className="Btn" to={"game"} onClick={startGame}>Begin</Link>
 
             </div>
 
