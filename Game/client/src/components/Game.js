@@ -1,10 +1,20 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
 
 import "../styles/Game.css";
-import fullheart from "./images/heart.png"
+import floor from "./images/flor.png";
+import guy from "./images/guy.png";
+import ghost from "./images/ghost.png";
+
+import { useGameContext } from "../hooks/useGameContext";
+
+//components
+import Lives from '../components/Lives'
 
 export default function Game(){
+
+    const {lives, dispatch} = useGameContext()
+    
+    var life = lives;
 
     const [randomWord, setWord] = useState(null)
 
@@ -17,23 +27,26 @@ export default function Game(){
                 setWord(json)
             }
         }
-
+        dispatch({type: 'SET_LIVES', payload: 3})
 
         fetchWord()
     },[])
 
 
+    const handleSubmit = async (e) =>{
+        e.preventDefault();
+        life -= 1; 
+        dispatch({type: 'EDIT_LIVES', payload: life})
+        console.log(lives);
+    }
+
     const inputRef2 = useRef(null)
     return(
-        <div className="container ">
-            <div className="imgcontainer">
-                <img src={fullheart } alt="fullheart"></img>
-                <img src={fullheart } alt="fullheart"></img>
-                <img src={fullheart } alt="fullheart"></img>
-            </div>
-            
-            <form id="form">
-                <input ref={inputRef2} type="text" className="brutalist-input smooth-type " placeholder="Enter word here..."/>
+       <div>
+         <div className="container ">
+            <Lives life={lives}/>
+            <form id="form" onSubmit={handleSubmit}>
+                <input ref={inputRef2} type="text" className="brutalist-input smooth-type " placeholder="Enter word here..."  />
             </form>
 
             <div className="randomWord">
@@ -41,7 +54,15 @@ export default function Game(){
                     <p key ={word._id}>{word.word}</p>
                 ))}
             </div>
-
         </div>
+         
+         
+        <div className="player">
+                <img src={guy } alt="floor" className="guy"></img>
+            </div>
+            <div className="floor">
+                <img src={floor } alt="floor" className="floorimg"></img>
+            </div>
+       </div>
     )
 }
