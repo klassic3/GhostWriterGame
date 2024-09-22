@@ -6,6 +6,7 @@ import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 /**import components */
 import Root from './Root';
 import Game from './Game';
+import GameOver from './GameOver';
 
 
 /**react routes */
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: '/game',
     element: <Game></Game>
+  },
+  {
+    path: '/gameover',
+    element: <GameOver></GameOver>
   }
 ])
 

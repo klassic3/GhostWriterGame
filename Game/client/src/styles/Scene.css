@@ -1,0 +1,42 @@
+.Above{
+    width: 1500px;
+    height: 150px;
+    margin: auto;
+}
+
+.guy{
+    width: 150px;
+    height: auto;
+    position: relative;
+    top: 26px;
+    left: 1%;
+}
+
+.ghost{
+    width: 150px;
+    height: auto;
+    position: relative;
+    bottom: 150px;
+    left: 90%;
+
+    animation: move 5s infinite linear;
+
+}
+
+.floor{
+    width: 1600px;
+    height: 150px;
+    background-image: url(../components/images/flor.png);
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+@keyframes move {
+    0% {
+      left: 150%x;
+    }
+  
+    100% {
+      left: -20%;
+    }
+  }

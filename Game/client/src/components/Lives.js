@@ -7,7 +7,6 @@ const Lives = ({life}) => {
     var heart1 = null;
     var heart2 = null;
     var heart3 = null;
-    console.log(life)
     if (life > 0)
     {
         heart1 = fullheart;
