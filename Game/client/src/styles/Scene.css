@@ -1,35 +1,28 @@
-.Above{
-    width: 1500px;
-    height: 150px;
+.Scene{
+    width: 900px;
+    height: 400px;
     margin: auto;
+    background-image: url(../components/images/Background.jpeg);
+    background-size: 900px 400px;
 }
 
 .guy{
     width: 150px;
     height: auto;
     position: relative;
-    top: 26px;
+    top: 185px;
     left: 1%;
 }
 
 .ghost{
-    width: 150px;
+    width: 130px;
     height: auto;
     position: relative;
-    bottom: 150px;
-    left: 90%;
-
+    top: 35px;
+    left: 85%;
     animation: move 5s infinite linear;
-
 }
 
-.floor{
-    width: 1600px;
-    height: 150px;
-    background-image: url(../components/images/flor.png);
-    background-size: 100% 100%;
-    margin: auto;
-}
 
 @keyframes move {
     0% {

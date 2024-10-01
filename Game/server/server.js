@@ -1,7 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import { config } from 'dotenv';
-import router from './routes/game.js';
+import gameroutes from './routes/game.js';
+import userroutes from './routes/user.js';
 import mongoose from 'mongoose' ;
 
 const app = express()
@@ -16,7 +17,9 @@ app.use((req, res, next) =>{
     next()
 })
 /**routes */
-app.use('/api/game',router)
+app.use('/api/game',gameroutes)
+
+app.use('/api/gameover',userroutes)
 
 app.get('/',(req, res) =>
 {

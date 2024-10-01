@@ -2,7 +2,6 @@ import "../styles/Scene.css";
 
 import { useNavigate } from "react-router-dom";
 
-import floor from "./images/flor.png";
 import guy from "./images/guy.png";
 import ghost from "./images/ghost.png";
 import { useGameContext } from "../hooks/useGameContext";
@@ -29,6 +28,7 @@ const Scene = () => {
 
     //gameover function
   const ghostid = document.getElementById("ghost");
+  const guyid = document.getElementById("guy");
 
 if (ghostid != null)
 {
@@ -36,9 +36,10 @@ if (ghostid != null)
   
         // get current ghostid X position
         let ghostLeft = parseInt(ghostid.getBoundingClientRect().left);
+        let guyLeft = parseInt(guyid.getBoundingClientRect().left);
       
         // detect collision
-        if (ghostLeft < 250 ) {
+        if (ghostLeft < guyLeft+100 ) {
           // collision
 
           if (life == 1)
@@ -54,18 +55,12 @@ if (ghostid != null)
   
     return(
         <div className="Scene">
-            <div className="Above">
-                <div>
-                    <img src={ guy } alt="floor" className="guy" id="guy"></img>
-                </div>
-
-                <div>
-                    <img src={ ghost } alt="floor" className="ghost" id="ghost"></img>
-                </div>
-            
+            <div>
+                <img src={ guy } alt="floor" className="guy" id="guy"></img>
             </div>
-           
-            <div className="floor">
+
+            <div>
+                <img src={ ghost } alt="floor" className="ghost" id="ghost"></img>
             </div>
         </div>
     )

@@ -1,10 +1,12 @@
 import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 
+import Score from '../components/Score.js'
+
 import "../styles/Root.css"
 import "../styles/Gameover.css"
 
-import trophy from "./images/trofy.png"
+import trophy from "../components/images/trofy.png"
 
 
 import { useScoreContext } from "../hooks/useScoreContext";
@@ -14,8 +16,10 @@ export default function GameOver(){
 
     return(
         <div className="container">
-            <h1 className="title text-light">GameOver</h1>
-            <h1 className="title text-light">Your Score was {scores}</h1>
+            <h1 className="title text-light">Game Over</h1>
+            <div className="deadimage"> </div>
+
+            <Score score={scores}/> 
             <div class="e-card playing">
             
   

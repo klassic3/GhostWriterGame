@@ -1,6 +1,6 @@
-import fullheart from "./images/heart.png";
+
 import emptyheart from "./images/empty.png";
-    
+import fullheart from "./images/heart.png"   
 
 
 const Lives = ({life}) => {

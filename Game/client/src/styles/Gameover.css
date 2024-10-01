@@ -86,3 +86,26 @@
       transform: rotate(360deg);
     }
   }
+
+  .deadimage{
+    width: 1000px;
+    height: 323px;
+    margin: auto;
+    display: flex;
+    background-image: url(../components/images/deadscene.png);
+    background-size: 1000px 323px;
+  }
+
+  .title{
+    display: flex;
+    justify-content: center;
+    color: rgb(241, 245, 31);
+    font-size: 100px;
+    font-family: serif;
+  }
+
+  .subtitle{
+    display: flex;
+    justify-content: center;
+    color: white;
+  }

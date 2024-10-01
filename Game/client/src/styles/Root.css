@@ -14,10 +14,10 @@
     position: relative;
     margin: 40px auto;
     height: auto;
-    width: 800px;
+    width: 1000px;
   }
   
-  .container .title{
+/*  .container .title{
       font-size: 3em;
       text-align: center;
       border: 5px solid var(--primary-color);
@@ -34,11 +34,11 @@
   .text-light {
       color: var(--light-color)
   }
-  
+  */
   #form{
     display: flex;
     justify-content: center;
-    margin-top: 4em;
+    margin-top: 1em;
 }
 
 #form .userid{
@@ -131,4 +131,27 @@
     100% {
       transform: scale3d(1, 1, 1);
     }
+  }
+
+
+  .em{
+    color: yellow;
+  }
+
+  .mainimage{
+    width: 1000px;
+    height: 323px;
+    margin: auto;
+    display: flex;
+    background-image: url(../components/images/homepage.png);
+    background-size: 1000px 323px;
+  }
+
+  .HTP{
+    width: 500px;
+    height: 400px;
+    margin: auto;
+    display: flex;
+    background-image: url(../components/images/Howtoplay.png);
+    background-size: 500px 400px;
   }

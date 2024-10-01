@@ -8,11 +8,11 @@ import { useScoreContext } from "../hooks/useScoreContext";
 import { useGameContext } from "../hooks/useGameContext";
 import { useWordContext } from "../hooks/useWordContext";
 
-import { reset_animation, life } from "./Scene";
+import { reset_animation, life } from "../components/Scene.js";
 
 //components
 import Lives from '../components/Lives'
-import Scene from "./Scene";
+import Scene from "../components/Scene";
 
 
 var score = null;
