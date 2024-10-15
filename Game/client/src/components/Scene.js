@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import guy from "./images/guy.png";
 import ghost from "./images/ghost.png";
 import { useGameContext } from "../hooks/useGameContext";
+import { useScore } from "../hooks/useScore";
+import { useClear } from "../hooks/useAdmin";
 
 
 export const reset_animation= () => {
@@ -18,6 +20,7 @@ export const reset_animation= () => {
    
     
   }
+ 
 export var life = null;
 
 const Scene = () => {
@@ -29,6 +32,19 @@ const Scene = () => {
     //gameover function
   const ghostid = document.getElementById("ghost");
   const guyid = document.getElementById("guy");
+
+
+  //gameover function
+  const {update, error, isLoading} = useScore()
+
+  const {clear} = useClear()
+
+  const endGame = async() =>{
+    //await clear()
+    await update()
+    navigate('../gameover')
+
+}
 
 if (ghostid != null)
 {
@@ -44,7 +60,7 @@ if (ghostid != null)
 
           if (life == 1)
           {
-            navigate('../gameover')
+           endGame()
           }
             life -= 1; 
             dispatch({type: 'EDIT_LIVES', payload: life})

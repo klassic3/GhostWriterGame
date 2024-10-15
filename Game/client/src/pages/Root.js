@@ -3,17 +3,19 @@ import { Link } from "react-router-dom";
 import {useRegister} from "../hooks/useRegister"
 
 import "../styles/Root.css"
+import { useLoad } from "../hooks/useAdmin";
 
 export default function Root(){
 
 
     const [name, setName] = useState('')
     const {register, error, isLoading} = useRegister()
+    const {load} = useLoad()
     //window.location.reload();
 
     const startGame = async(e) =>{
         e.preventDefault()
-
+        //await load()
         await register(name)
 
     }
