@@ -1,13 +1,13 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
-const schema = mongoose.Schema
+const schema = mongoose.Schema;
 
 const gameSchema = new schema({
-    word:{
+    word: {
         type: String,
-        required: true
+        required: true,
+        unique: true,  // Ensure words are unique
     }
-})
+});
 
-export default mongoose.model('Game', gameSchema)
-
+module.exports = mongoose.model('Game', gameSchema);

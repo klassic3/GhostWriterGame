@@ -1,5 +1,12 @@
+
+.game-wrapper {
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
 .brutalist-input {
-    width: 100%;
+    width: 50%;
+    left:25%;
     padding: 15px;
     font-size: 18px;
     font-weight: bold;
@@ -159,29 +166,18 @@
       border-color: #4a90e2;
     }
   }
-
+  .heartimg{
+    width: 20%;
+    max-width: 200px;
+    height: auto;
+    }
   .imgcontainer{
     display: flex;
     justify-content: center;
-  }
-
-  img{
-  width: 20%;
-  max-width: 400px;
-  height: auto;
   }
 
   .randomWord{
     font-size: 3em;
     text-align: center;
     color: antiquewhite;
-  }
-
-
-  .Score{
-    position: relative;
-    font-size: 3em;
-    color: floralwhite;
-    display: flex;
-    justify-content: center;
   }

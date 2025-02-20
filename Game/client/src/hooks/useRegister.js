@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useUserContext } from './useUserContext'
+import { useUserContext } from './useUserContext.js'
 import { useIdContext } from './useIdContext.js'
 
 export const useRegister = () => {

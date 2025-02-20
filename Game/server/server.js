@@ -1,41 +1,50 @@
-import express from 'express';
-import cors from 'cors';
-import { config } from 'dotenv';
-import gameroutes from './routes/game.js';
-import userroutes from './routes/user.js';
-import mongoose from 'mongoose' ;
+const express = require('express');
+const cors = require('cors');
+const { config } = require('dotenv');
+const mongoose = require('mongoose');
+const gameroutes = require('./routes/gameRoutes.js');
+const userroutes = require('./routes/userRoutes.js');
 
-const app = express()
-
-app.use(cors());
-app.use(express.json());
+// Initialize environment variables
 config();
 
-const port = process.env.PORT || 8080
-app.use((req, res, next) =>{
-    console.log(req.path, req.method)
-    next()
-})
-/**routes */
-app.use('/api/game',gameroutes)
+// Create Express app instance
+const app = express();
 
-app.use('/api/gameover',userroutes)
+// Set up middlewares
+app.use(cors());
+app.use(express.json());
 
-app.get('/',(req, res) =>
-{
-    try{
-        res.json("getreq")
-    }catch(error){
-        res.json(error)
+// Middleware for logging requests
+app.use((req, res, next) => {
+    console.log(`${req.method} ${req.path}`);
+    next();
+});
+
+// Routes
+app.use('/api/game', gameroutes);
+app.use('/api/user', userroutes);
+
+// MongoDB connection
+const connectDB = async () => {
+    try {
+        await mongoose.connect(process.env.MONGO_URI);
+        console.log('MongoDB connected');
+    } catch (error) {
+        console.error('Database connection failed', error);
+        process.exit(1); // Exit the process if database connection fails
     }
-})
+};
 
-mongoose.connect(process.env.MONGO_URI)
-    .then(() => {
-        app.listen(port,() =>{
-        console.log(`server connected on port ${port} `)
-    })
-    })
-    .catch((error) => {
-        console.log(error)
-    })
+// Start the server after DB connection
+const startServer = async () => {
+    await connectDB();
+
+    const port = process.env.PORT || 8080;
+    app.listen(port, () => {
+        console.log(`Server running on port ${port}`);
+    });
+};
+
+// Call the startServer function
+startServer();

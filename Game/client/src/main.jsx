@@ -1,6 +1,6 @@
+import './index.css';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './styles/index.css';
 import App from './App';
 import { GameContextProvider } from './context/GameContext';
 import { WordContextProvider } from './context/WordContext';

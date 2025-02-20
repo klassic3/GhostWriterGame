@@ -1,157 +1,379 @@
-:root{
-    --primary-color: #faf60e;
-    --dark-color:#222222;
-    --light-color: #f0f0f0;
-  }
-  
-  body, html{
-    height: 100%;
-    background: var(--dark-color)
-  }
-  
-  .container{
-    display: block;
-    position: relative;
-    margin: 40px auto;
-    height: auto;
-    width: 1000px;
-  }
-  
-/*  .container .title{
-      font-size: 3em;
-      text-align: center;
-      border: 5px solid var(--primary-color);
-      padding: .3em .2em;
-      border-radius: 4px;
-  }
-  
-.subtitle{
-      text-align: center;
-      padding: .3em .2em;
-    
-  }
-  
-  .text-light {
-      color: var(--light-color)
-  }
-  */
-  #form{
-    display: flex;
-    justify-content: center;
-    margin-top: 1em;
-}
-
-#form .userid{
-    background: none;
-    border: none;
-    outline: none;
-    max-width: 190px;
-    border-radius: 9999px;
-    box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
-    color: #fff;
-    padding: .7em 2em;
-    font-size: 1em;
-}
-
-.start{
-    display: flex;
-    justify-content: center;
-    padding-top: 2em;
-}
-
-  .Btn {
-    padding: .2em 1.7em;
-    position: relative;
-    width: 150px;
-    height: 55px;
-    border-radius: 45px;
-    border: none;
-    background-color: rgb(151, 95, 255);
+/* Global styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
     color: white;
-    box-shadow: 0px 10px 10px rgb(210, 187, 253) inset,
-    0px 5px 10px rgba(5, 5, 5, 0.212),
-    0px -10px 10px rgb(124, 54, 255) inset;
-    cursor: pointer;
+    background-color: #1a202c; /* dark gray */
+}
+
+.homepage-container {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-  }
-  
-  .Btn::before {
-    width: 70%;
-    height: 2px;
+    min-height: 100vh;
+    padding: 0 1rem; /* for some horizontal spacing */
+    gap: 2rem; /* Adds spacing between elements */
+}
+
+.homepage-image-container {
+    width: 100%;
+    height: auto;
+}
+
+.homepage-image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.name-input-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+    width: 100%;
+    max-width: 24rem; /* 384px */
+    gap: 1rem; /* Adds space between input and button */
+}
+
+.name-input {
+    background: transparent;
+    border-bottom: 2px solid white;
+    outline: none;
+    color: white;
+    font-size: 1.125rem; /* 18px */
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem; /* Added margin for spacing */
+    width: 100%;
+}
+
+.start-button-container {
+    position: relative;
+    display: inline-block;
+    margin-top: 1.5rem; /* Adds space between form and button */
+}
+
+.start-button-background {
+    position: relative;
+    width: 16rem; /* 256px */
+    height: 3.5rem; /* 56px */
+    opacity: 0.9;
+    overflow: hidden;
+    border-radius: 1rem; /* rounded corners */
+    background-color: black;
+    z-index: 10;
+}
+
+.start-button-hover-effect {
     position: absolute;
-    background-color: rgba(250, 250, 250, 0.678);
-    content: "";
-    filter: blur(1px);
-    top: 7px;
-    border-radius: 50%;
-  }
-  
-  .Btn::after {
-    width: 70%;
-    height: 2px;
+    z-index: 10;
+    transform: translateX(-11rem); /* 176px */
+    transition: transform 0.7s ease-in-out;
+    height: 100%;
+    width: 11rem; /* 176px */
+    background: linear-gradient(to right, #6b7280, rgba(255, 255, 255, 0.1)); /* gray to white */
+    opacity: 0.3;
+    transform: skewX(-12deg);
+}
+
+.start-button-container:hover .start-button-hover-effect {
+    transform: translateX(30rem); /* large translate effect on hover */
+}
+
+.start-button {
     position: absolute;
-    background-color: rgba(250, 250, 250, 0.137);
-    content: "";
-    filter: blur(1px);
-    bottom: 7px;
-    border-radius: 50%;
-  }
-  
-  .Btn:hover {
-    animation: jello-horizontal 0.9s both;
-  }
-  
-  @keyframes jello-horizontal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 1;
+    opacity: 0.9;
+    background-color: black;
+    border-radius: 1rem;
+    inset: 0.5rem;
+    width: calc(100% - 1rem);
+    height: 100%;
+}
+
+.start-button-text {
+    font-weight: 600;
+    font-size: 1.125rem; /* 18px */
+    height: 100%;
+    opacity: 0.9;
+    width: 100%;
+    padding: 0.75rem 4rem; /* 12px by 64px */
+    border-radius: 1rem;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.start-button-animated-background {
+    position: absolute;
+    width: 100%;
+    height: 6.25rem; /* 100px */
+    background: linear-gradient(to right, #22c55e, #f59e0b); /* green to yellow */
+    filter: blur(30px);
+    animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
     0% {
-      transform: scale3d(1, 1, 1);
+        transform: rotate(0deg);
     }
-  
-    30% {
-      transform: scale3d(1.25, 0.75, 1);
-    }
-  
-    40% {
-      transform: scale3d(0.75, 1.25, 1);
-    }
-  
-    50% {
-      transform: scale3d(1.15, 0.85, 1);
-    }
-  
-    65% {
-      transform: scale3d(0.95, 1.05, 1);
-    }
-  
-    75% {
-      transform: scale3d(1.05, 0.95, 1);
-    }
-  
+
     100% {
-      transform: scale3d(1, 1, 1);
+        transform: rotate(360deg);
     }
-  }
+}
+
+.error-message {
+    color: #f87171; /* red-500 */
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 1rem; /* 16px */
+}
 
 
-  .em{
-    color: yellow;
-  }
+/* From Uiverse.io by SelfMadeSystem */
+/* Yoinked from CodePen, but improved the animation so that it is smooth among other more minor things */
 
-  .mainimage{
-    width: 1000px;
-    height: 323px;
-    margin: auto;
-    display: flex;
-    background-image: url(../components/images/homepage.png);
-    background-size: 1000px 323px;
-  }
+.codepen-button {
+    display: block;
+    cursor: pointer;
+    color: white;
+    margin: 0 auto;
+    position: relative;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 6px;
+    overflow: hidden;
+    padding: 3px;
+    isolation: isolate;
+    width: 100%; /* Ensure it takes full width on smaller screens */
+    max-width: 250px; /* Optional max width to maintain button size */
+}
 
-  .HTP{
-    width: 500px;
-    height: 400px;
-    margin: auto;
-    display: flex;
-    background-image: url(../components/images/Howtoplay.png);
-    background-size: 500px 400px;
-  }
+.codepen-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 400%;
+    height: 100%;
+    background: linear-gradient(115deg, #4b0082, #9b30ff, #ff4500, #8b0000, #333333);
+    background-size: 25% 100%;
+    animation: an-at-keyframe-css-at-rule-that-translates-via-the-transform-property-the-background-by-negative-25-percent-of-its-width-so-that-it-gives-a-nice-border-animation_-We-use-the-translate-property-to-have-a-nice-transition-so-it_s-not-a-jerk-of-a-start-or-stop .75s linear infinite;
+    animation-play-state: paused;
+    translate: -5% 0%;
+    transition: translate 0.25s ease-out;
+}
+
+.codepen-button:hover::before {
+    animation-play-state: running;
+    transition-duration: 0.75s;
+    translate: 0% 0%;
+}
+
+.codepen-button span {
+    position: relative;
+    display: block;
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+    background: #000;
+    border-radius: 3px;
+    height: 100%;
+}
+
+/* From Uiverse.io by SelfMadeSystem */
+/* Making .codepen-button responsive */
+.codepen-button {
+    display: block;
+    cursor: pointer;
+    color: white;
+    margin: 0 auto;
+    position: relative;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 6px;
+    overflow: hidden;
+    padding: 3px;
+    isolation: isolate;
+    width: 100%; /* Ensure it takes full width on smaller screens */
+    max-width: 250px; /* Optional max width to maintain button size */
+}
+
+/* Adjust size of span inside button for mobile */
+.codepen-button span {
+    position: relative;
+    display: block;
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+    background: #000;
+    border-radius: 3px;
+    height: 100%;
+}
+
+/* Making the animation responsive */
+@keyframes an-at-keyframe-css-at-rule-that-translates-via-the-transform-property-the-background-by-negative-25-percent-of-its-width-so-that-it-gives-a-nice-border-animation_-We-use-the-translate-property-to-have-a-nice-transition-so-it_s-not-a-jerk-of-a-start-or-stop {
+    to {
+        transform: translateX(-25%);
+    }
+}
+
+@media (max-width: 768px) {
+    .codepen-button {
+        max-width: 100%; /* Full width on tablets */
+        padding: 0; /* Reduce padding for smaller screens */
+    }
+
+    .codepen-button span {
+        padding: 0.8rem 1rem; /* Adjust padding for smaller screens */
+        font-size: 1rem; /* Make font size a little smaller */
+    }
+}
+
+@media (max-width: 480px) {
+    .codepen-button {
+        padding: 0; /* Adjust padding for mobile */
+    }
+
+    .codepen-button span {
+        padding: 0.6rem 0.8rem; /* Even smaller padding for mobile */
+        font-size: 0.9rem; /* Further reduce font size */
+    }
+}
+
+
+/* From Uiverse.io by Rodrypaladin */
+
+/* Making registerBox responsive */
+.registerBox {
+    position: relative;
+    margin-top: 1.5rem; /* Adds spacing between register box and other content */
+
+    max-width: 300px; /* Ensures box doesn't expand too much */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Making registerBoxBorder responsive */
+.registerBoxBorder {
+    background-image: linear-gradient(to right bottom, #6e00ff, #3b00a6, #3d00c4, #5e4f56, #8c006e);
+    box-shadow: -25px -10px 30px -5px rgba(225, 0, 255, 0.5),
+        25px -10px 30px -5px rgba(255, 0, 212, 0.5),
+        25px 10px 30px -5px rgba(255, 174, 0, 0.5),
+        -25px 10px 30px -5px rgba(255, 230, 0, 0.5);
+    padding: 4px;
+}
+
+/* Making the registerInput responsive */
+.registerInput {
+    background-color: #212121;
+    width: 100%; /* Ensure it fills the container */
+    height: 40px;
+    padding: 0 19px 0 10px;
+    font-size: 1.1em;
+    border: none;
+    color: white;
+    outline: 0;
+    overflow: hidden;
+    box-sizing: border-box; /* Ensures padding doesn't cause overflow */
+}
+
+/* Ensure placeholder text transitions smoothly */
+.registerInput::placeholder {
+    transition: all 0.5s ease-in, transform 0.2s ease-in 0.6s;
+}
+
+/* Adjust focus styles */
+.registerInput:focus::placeholder {
+    padding-left: 165px;
+    transform: translateY(-50px);
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+    .registerBox {
+        max-width: 80%; /* Allow register box to be more fluid on tablets */
+    }
+
+    .registerInput {
+        font-size: 1rem; /* Smaller font size on smaller screens */
+        padding: 0 15px; /* Adjust padding */
+    }
+
+    .registerBoxBorder {
+        padding: 3px; /* Reduce padding around border for smaller devices */
+    }
+}
+
+@media (max-width: 480px) {
+    .registerBox {
+        max-width: 90%; /* Allow even more space on mobile */
+    }
+
+    .registerInput {
+        font-size: 0.95rem; /* Slightly smaller text */
+        padding: 0 12px; /* Adjust padding for mobile */
+    }
+}
+
+
+/* From Uiverse.io by Rodrypaladin */
+.registerBox {
+    position: relative;
+    margin-top: 1.5rem; /* Adds spacing between register box and other content */
+}
+
+.registerBoxBorder {
+    background-image: linear-gradient(to right bottom, #6e00ff, #3b00a6, #3d00c4, #5e4f56, #8c006e);
+    box-shadow: -25px -10px 30px -5px rgba(225, 0, 255, 0.5),
+        25px -10px 30px -5px rgba(255, 0, 212, 0.5),
+        25px 10px 30px -5px rgba(255, 174, 0, 0.5),
+        -25px 10px 30px -5px rgba(255, 230, 0, 0.5);
+    padding: 4px;
+}
+
+.registerInput {
+    background-color: #212121;
+    max-width: 250px;
+    height: 40px;
+    padding: 0 19px 0 10px;
+    font-size: 1.1em;
+    position: relative;
+    border: none;
+    color: white;
+    outline: 0;
+    overflow: hidden;
+}
+
+.registerBox::after,
+.registerBox::before {
+    content: "";
+    width: 130px;
+    height: 30px;
+    position: absolute;
+    z-index: -1;
+}
+
+.registerBox::after {
+    bottom: 0;
+    right: 0;
+}
+
+.registerBox::before {
+    top: 0;
+    left: 0;
+}
+
+.registerInput::placeholder {
+    transition: all 0.5s ease-in, transform 0.2s ease-in 0.6s;
+}
+
+.registerInput:focus::placeholder {
+    padding-left: 165px;
+    transform: translateY(-50px);
+}

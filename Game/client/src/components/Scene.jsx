@@ -1,9 +1,8 @@
-import "../styles/Scene.css";
 
 import { useNavigate } from "react-router-dom";
 
-import guy from "./images/guy.png";
-import ghost from "./images/ghost.png";
+import guy from "/images/guy.png";
+import ghost from "/images/ghost.png";
 import { useGameContext } from "../hooks/useGameContext";
 import { useScore } from "../hooks/useScore";
 import { useClear } from "../hooks/useAdmin";
