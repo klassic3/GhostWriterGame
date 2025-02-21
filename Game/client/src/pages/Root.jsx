@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-
+import React, { useEffect, useState, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import { register } from "../services/userService";
 import { addWord } from "../services/gameService";
 
-//css
-import "../styles/Root.css"
+// css
+import "../styles/Root.css";
 
 export default function Root() {
     const [name, setName] = useState('');
@@ -13,11 +12,11 @@ export default function Root() {
     const navigate = useNavigate();
 
     // Start the game
-    const startGame = async (e) => {
+    const startGame = useCallback(async (e) => {
         e.preventDefault();
 
         if (!name.trim()) {
-            setErrorMessage("Username cannot be empty!");  // Set error message if name is empty
+            setErrorMessage("Enter a username first!");  // Set error message if name is empty
             return;
         }
 
@@ -25,22 +24,21 @@ export default function Root() {
         try {
             const res = await register(name);
             if (typeof res === "string") {
-                alert(result);
+                alert(res); // Use `res` instead of `result` which doesn't exist
             } else {
-                navigate('/game');
+                navigate('/game', { state: { id: res.msg } });
             }
         } catch (error) {
             console.error("Error during form submission:", error);
             alert("An error occurred while submitting the form.");
         }
+    }, [name, navigate]);
 
-    };
-
+    // Load additional words (only runs once on mount)
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await addWord(); // Assuming addWord is your async function
-                console.log(res); // Handle the response if needed
+                const res = await addWord();
             } catch (error) {
                 console.error("Error during adding words:", error);
                 alert("An error occurred while adding words");
@@ -48,8 +46,7 @@ export default function Root() {
         };
 
         fetchData();
-    }, []);
-
+    }, []); // Empty dependency array ensures this runs only once on mount
 
     return (
         <div className="homepage-container">
@@ -65,20 +62,22 @@ export default function Root() {
                 Enter the words you see before the ghosts reach you!!
             </div>
             {/* Name Input Field */}
-            <div class="registerBox">
-                <div class="registerBoxBorder">
-                    <input type="text"
+            <div className="registerBox">
+                <div className="registerBoxBorder">
+                    <input
+                        type="text"
                         name="username"
-                        class="registerInput"
+                        className="registerInput"
                         placeholder="Enter your username"
                         onChange={(e) => setName(e.target.value)}
                         value={name}
-                        required />
+                        required
+                    />
                 </div>
             </div>
 
             {/* Start Button */}
-            <a class="codepen-button">
+            <a className="codepen-button">
                 <button
                     onClick={startGame}
                     name="text"
