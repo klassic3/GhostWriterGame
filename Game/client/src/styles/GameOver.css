@@ -27,7 +27,6 @@
 /* Styling for the epic title with specific font, color, and text transformations */
 .epic-title {
     font-size: 4rem;
-    font-family: 'Creepster', cursive;
     color: #b3b3b3;
     text-transform: uppercase;
     letter-spacing: 4px;
@@ -36,7 +35,6 @@
 /* Styling for the epic score text with specific font and subtle letter-spacing */
 .epic-score {
     font-size: 2.5rem;
-    font-family: 'Creepster', cursive;
     color: #dcdcdc;
     letter-spacing: 1px;
 }
@@ -44,7 +42,6 @@
 /* Styling for the top scores section, including color and letter spacing */
 .epic-top-scores {
     font-size: 2rem;
-    font-family: 'Creepster', cursive;
     color: #baadbe;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -98,7 +95,7 @@
 
 /* Name styling within the card */
 .name {
-    font-size: 14px;
+    font-size: 24px;
     font-weight: 100;
     position: relative;
     top: 1em;

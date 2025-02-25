@@ -36,6 +36,7 @@ export default function Game() {
             navigate("/");
         } else {
             fetchWord();
+            inputRef2.current?.focus();
         }
     }, [userId, fetchWord, navigate]);
 
