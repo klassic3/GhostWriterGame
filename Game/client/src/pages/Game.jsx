@@ -84,7 +84,7 @@ export default function Game() {
                 if (lives === 1) {
                     update(userId, score);
                     setGameOver(true);
-                    navigate("/gameover", { state: { id: userId } });
+                    navigate("/gameover", { state: { id: userId, score: score } });
                 }
                 deleteGhost();
                 setLives((prevLife) => prevLife - 1); // Decrease life

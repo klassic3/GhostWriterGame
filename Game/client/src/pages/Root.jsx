@@ -81,7 +81,6 @@ export default function Root() {
                 <button
                     onClick={startGame}
                     name="text"
-                    type="submit"
                     className="start-button-text"
                 >
                     BEGIN

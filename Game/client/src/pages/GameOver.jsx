@@ -15,23 +15,14 @@ export default function GameOver() {
     // Retrieve user ID from state
     const userId = location.state?.id;
 
-    const [score, setScore] = useState(0);
+    const score = location.state?.score;
+
     const [topScores, setTopScores] = useState([]);
 
 
     const Home = () => {
         navigate('/');
     }
-    // Fetch user's score
-    const fetchScore = useCallback(async () => {
-        try {
-            const res = await getScore(userId);
-            setScore(res.msg || 0);
-        } catch (error) {
-            console.error("Error getting score:", error);
-            alert("An error occurred while retrieving your score.");
-        }
-    }, [userId]);
 
     // Fetch top scores
     const fetchTopScores = useCallback(async () => {
@@ -49,10 +40,9 @@ export default function GameOver() {
         if (!userId) {
             navigate("/"); // Redirect if no user ID is found
         } else {
-            fetchScore();
             fetchTopScores();
         }
-    }, [userId, fetchScore, fetchTopScores, navigate]);
+    }, [userId, fetchTopScores, navigate]);
 
     
     return (
