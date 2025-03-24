@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://127.0.0.1:5000/api";
+const API_URL = "https://mern-game-3u43.onrender.com/api";
 
 //auth routes
 export const REGISTER = "user/";
