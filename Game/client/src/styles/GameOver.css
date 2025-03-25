@@ -2,7 +2,7 @@
 .GOcontainer {
     position: relative;
     display: flex;
-    height: 100vh;
+    height: 75vh;
     flex-direction: column;
     justify-content: center;
     align-items: center;

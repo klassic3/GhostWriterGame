@@ -11,7 +11,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
+    min-height: 75vh;
     padding: 0 1rem; /* for some horizontal spacing */
     gap: 2rem; /* Adds spacing between elements */
 }

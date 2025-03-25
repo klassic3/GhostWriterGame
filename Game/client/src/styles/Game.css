@@ -1,8 +1,9 @@
 /* Styles for the game wrapper container */
 .game-wrapper {
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
+    display: flex;            
+    flex-direction: column;   
+    justify-content: center;    
+    height: 100vh;            
 }
 
 /* Brutalist input styling */
