@@ -58,43 +58,51 @@ export default function Root() {
     }, []); // Empty dependency array ensures this runs only once on mount
 
     return (
-        <div className="homepage-container">
-            {/* Main Homepage Image */}
-            <div className="homepage-image-container">
-                <img
-                    src="/images/homepage.png"
-                    alt="Homepage"
-                    className="homepage-image"
-                />
-            </div>
-            <div className="howtoplay">
-                Enter the words you see before the ghosts reach you!!
-            </div>
-            {/* Name Input Field */}
-            <div className="registerBox">
-                <div className="registerBoxBorder">
-                    <input
-                        type="text"
-                        name="username"
-                        className="registerInput"
-                        placeholder="Enter your username"
-                        onChange={(e) => setName(e.target.value)}
-                        value={name}
-                        required
+        <div>
+            <div className="homepage-container">
+                {/* Main Homepage Image */}
+                <div className="homepage-image-container">
+                    <img
+                        src="/images/homepage.png"
+                        alt="Homepage"
+                        className="homepage-image"
                     />
                 </div>
-            </div>
+                <div className="howtoplay">
+                    Enter the words you see before the ghosts reach you!!
+                </div>
+                {/* Name Input Field */}
+                <div className="registerBox">
+                    <div className="registerBoxBorder">
+                        <input
+                            type="text"
+                            name="username"
+                            className="registerInput"
+                            placeholder="Enter your username"
+                            onChange={(e) => setName(e.target.value)}
+                            value={name}
+                            required
+                        />
+                    </div>
+                </div>
 
-            {/* Start Button */}
-            <a className="codepen-button">
-                <button
-                    onClick={startGame}
-                    name="text"
-                    className="start-button-text"
-                >
-                    BEGIN
-                </button>
-            </a>
+                {/* Start Button */}
+                <a className="codepen-button">
+                    <button
+                        onClick={startGame}
+                        name="text"
+                        className="start-button-text"
+                    >
+                        BEGIN
+                    </button>
+                </a>
+
+
+            </div>
+            {/* Made by me section */}
+            <div className="credits">
+                <p>Made by Chris Maharjan</p>
+            </div>
         </div>
     );
 }

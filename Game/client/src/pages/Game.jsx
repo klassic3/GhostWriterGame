@@ -9,6 +9,9 @@ import fullheart from "/images/heart.png";
 import { getWord } from "../services/gameService";
 import { update } from "../services/userService";
 
+import { toast } from "react-toastify";
+
+
 export default function Game() {
     const location = useLocation();
     const userId = location.state?.id;
@@ -39,6 +42,7 @@ export default function Game() {
             const randomWord = await getWord();
             setWord(randomWord);
             setLoading(false);
+            toast.success("Enter the word to start the game!");
         };
         if (!word.length) {
             initialWord();
