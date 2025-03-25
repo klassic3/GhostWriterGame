@@ -15,9 +15,8 @@ export default function Game() {
     const navigate = useNavigate();
 
     const [lives, setLives] = useState(3);
-
-    const [word, setWord] = useState("start");
-    const [nextWord, setNextWord] = useState(null); // Store the next word to cache
+    const [word, setWord] = useState([]);
+    const [nextWord, setNextWord] = useState([]);
     const [inputValue, setInputValue] = useState("");
     const [ghost, setGhost] = useState({ x: 800, height: 50 });
     const [score, setScore] = useState(0);
@@ -28,9 +27,19 @@ export default function Game() {
 
     // Fetch a new random word
     const fetchWord = useCallback(async () => {
-        // Fetch a new word to cache for the next round
         const randomWord = await getWord();
-        setNextWord(randomWord); // Set the next word for future use
+        setNextWord(randomWord);
+    }, []);
+
+    useEffect(() => {
+        const initialWord = async () => {
+            const randomWord = await getWord();
+            setWord(randomWord);
+        };
+        if (!word.length) {
+            initialWord();
+        }
+        console.log("hello");
     }, []);
 
     // Fetch word on initial load
@@ -41,16 +50,16 @@ export default function Game() {
             fetchWord();
             inputRef2.current?.focus();
         }
-    }, [userId, fetchWord, navigate]);
+    }, [fetchWord, navigate]);
 
     // Handle word input submission
     const handleSubmit = async (e) => {
         e.preventDefault();
         const correctWord = word?.[0]?.word;
         if (inputRef2.current.value === correctWord) {
-            setScore((prevScore) => prevScore + 1);
-            setWord(nextWord); 
+            setWord(nextWord);
             fetchWord();
+            setScore((prevScore) => prevScore + 1);
             deleteGhost();
         }
         setInputValue(""); // Clear input field
