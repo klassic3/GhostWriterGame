@@ -50,7 +50,7 @@ export default function Root() {
                 const res = await deleteUsers();
             } catch (error) {
                 console.error("Error during deleting users:", error);
-                alert("An error occurred while deleting users");
+
             }
         }
 

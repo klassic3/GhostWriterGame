@@ -13,6 +13,6 @@ router.get('/id/:id', getScore);
 
 router.get('/top', getTop3Scores);
 
-router.get('/delete', deleteUsers);
+router.delete('/delete', deleteUsers);
 
 module.exports = router;
