@@ -3,12 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { register, deleteUsers } from "../services/userService";
 import { addWord } from "../services/gameService";
 
+import { toast } from "react-toastify";
 // css
 import "../styles/Root.css";
 
 export default function Root() {
     const [name, setName] = useState('');
-    const [errorMessage, setErrorMessage] = useState(''); // State to hold error message
     const navigate = useNavigate();
 
     // Start the game
@@ -16,11 +16,10 @@ export default function Root() {
         e.preventDefault();
 
         if (!name.trim()) {
-            setErrorMessage("Enter a username first!");  // Set error message if name is empty
+            toast.error("Enter a username first!");  // Set error message if name is empty
             return;
         }
 
-        setErrorMessage(''); // Clear the error message if name is valid
         try {
             const res = await register(name);
             if (typeof res === "string") {
@@ -30,7 +29,7 @@ export default function Root() {
             }
         } catch (error) {
             console.error("Error during form submission:", error);
-            alert("An error occurred while submitting the form.");
+            toast.error("An error occurred while submitting the form.");
         }
     }, [name, navigate]);
 
@@ -50,7 +49,7 @@ export default function Root() {
                 const res = await deleteUsers();
             } catch (error) {
                 console.error("Error during deleting users:", error);
-
+                alert("An error occurred while deleting users");
             }
         }
 
@@ -96,9 +95,6 @@ export default function Root() {
                     BEGIN
                 </button>
             </a>
-
-            {/* Error Message */}
-            {errorMessage && <div className="error-message">{errorMessage}</div>}
         </div>
     );
 }

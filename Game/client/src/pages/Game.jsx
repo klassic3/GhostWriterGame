@@ -22,6 +22,8 @@ export default function Game() {
     const [score, setScore] = useState(0);
     const [gameOver, setGameOver] = useState(false);
 
+    const [loading, setLoading] = useState(true);  // Add a loading state
+
     const ghostSpeed = 6;
     const inputRef2 = useRef(null);
 
@@ -35,6 +37,7 @@ export default function Game() {
         const initialWord = async () => {
             const randomWord = await getWord();
             setWord(randomWord);
+            setLoading(false);
         };
         if (!word.length) {
             initialWord();
@@ -132,6 +135,15 @@ export default function Game() {
             </div>
         );
     };
+
+    // Show loading indicator if the word hasn't been fetched
+    if (loading) {
+        return (
+            <div className="loading-screen">
+                <p>Loading...</p> {/* You can replace this with a spinner if you prefer */}
+            </div>
+        );
+    }
 
     return (
         <div className="game-wrapper">

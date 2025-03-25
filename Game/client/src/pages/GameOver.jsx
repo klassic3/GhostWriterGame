@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { getScore, getTopScores } from "../services/userService";
+import { getTopScores } from "../services/userService";
 import '../styles/GameOver.css';
 
 // Icons for 1st, 2nd, and 3rd place
@@ -19,6 +19,7 @@ export default function GameOver() {
 
     const [topScores, setTopScores] = useState([]);
 
+    const [loading, setLoading] = useState(true);
 
     const Home = () => {
         navigate('/');
@@ -29,6 +30,7 @@ export default function GameOver() {
         try {
             const res = await getTopScores();
             setTopScores(res.data || []);
+            setLoading(false);
         } catch (error) {
             console.error("Error fetching top scores:", error);
             alert("An error occurred while retrieving the top scores.");
@@ -44,7 +46,15 @@ export default function GameOver() {
         }
     }, [userId, fetchTopScores, navigate]);
 
-    
+    // Show loading indicator if the word hasn't been fetched
+    if (loading) {
+        return (
+            <div className="loading-screen">
+                <p>Loading...</p> {/* You can replace this with a spinner if you prefer */}
+            </div>
+        );
+    }
+
     return (
         <div className="GOcontainer">
             <div className="title epic-title">Game Over</div>

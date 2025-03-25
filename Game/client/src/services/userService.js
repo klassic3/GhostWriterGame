@@ -42,7 +42,6 @@ const getTopScores = async () => {
 const deleteUsers = async () => {
     try {
         const response = await api.delete(DELETEUSERS);
-        console.log(response);
         return response.data;
     } catch (error) {
         throw error;
