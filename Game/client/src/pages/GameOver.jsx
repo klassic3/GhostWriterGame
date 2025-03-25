@@ -50,7 +50,7 @@ export default function GameOver() {
     if (loading) {
         return (
             <div className="loading-screen">
-                <p>Loading...</p> {/* You can replace this with a spinner if you prefer */}
+                <div class="heart"></div>
             </div>
         );
     }
