@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import { register } from "../services/userService";
+import { register, deleteUsers } from "../services/userService";
 import { addWord } from "../services/gameService";
 
 // css
@@ -45,6 +45,16 @@ export default function Root() {
             }
         };
 
+        const clearUsers = async () => {
+            try {
+                const res = await deleteUsers();
+            } catch (error) {
+                console.error("Error during deleting users:", error);
+                alert("An error occurred while deleting users");
+            }
+        }
+
+        clearUsers();
         fetchData();
     }, []); // Empty dependency array ensures this runs only once on mount
 

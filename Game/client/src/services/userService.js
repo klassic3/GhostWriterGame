@@ -1,9 +1,9 @@
 import api from "./api";
-import { REGISTER, SCORE, TOPSCORES } from "./api";
+import { REGISTER, SCORE, TOPSCORES, DELETEUSERS } from "./api";
 
 const register = async (name) => {
     try {
-        const response = await api.post(REGISTER, { name: name });  // Send an object { name: name }
+        const response = await api.post(REGISTER, { name: name }); // Send an object { name: name }
         return response.data;
     } catch (error) {
         throw error;
@@ -28,7 +28,7 @@ const getScore = async (id) => {
     } catch (error) {
         throw error;
     }
-}
+};
 
 const getTopScores = async () => {
     try {
@@ -37,6 +37,15 @@ const getTopScores = async () => {
     } catch (error) {
         throw error;
     }
-}
+};
 
-export { register, update,getScore, getTopScores };
+const deleteUsers = async () => {
+    try {
+        const response = await api.delete(DELETEUSERS);
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};
+
+export { register, update, getScore, getTopScores, deleteUsers };

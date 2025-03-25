@@ -6,6 +6,7 @@ const API_URL = "https://mern-game-3u43.onrender.com/api";
 export const REGISTER = "user/";
 export const SCORE = "user/id/:id";
 export const TOPSCORES = "user/top";
+export const DELETEUSERS = "user/delete";
 
 //game routes
 export const WORD ="game/"

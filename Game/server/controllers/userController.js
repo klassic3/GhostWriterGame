@@ -68,10 +68,37 @@ const getTop3Scores = async (req, res) => {
         });
     }
 };
+
+const deleteUsers = async (req, res) => {
+    try {
+        // Get the total count of users
+        const userCount = await User.countDocuments();
+
+        // Do nothing if there are 100 or fewer users
+        if (userCount <= 100) {
+            return; // Simply return without doing anything
+        }
+
+        // Find the top 100 users sorted by score in descending order
+        const top100Users = await User.find().sort({ score: -1 }).limit(100);
+
+        // Get the score of the 100th user
+        const scoreThreshold = top100Users[top100Users.length - 1].score;
+
+        // Delete users with a score less than the 100th highest score
+        const deletedUsers = await User.deleteMany({ score: { $lt: scoreThreshold } });
+
+        res.json({ msg: `${deletedUsers.deletedCount} users deleted successfully` });
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+};
+
 module.exports = {
     register,
     update,
     deleteAll,
     getScore,
-    getTop3Scores
+    getTop3Scores,
+    deleteUsers
 };
