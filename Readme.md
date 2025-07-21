@@ -35,15 +35,19 @@ Option 1: Play the Web Build <br>
 Option 2: Run in localhost
 - Clone this repo
 - Create a .env file in Game/server folder with
-  * PORT = *port number*
-  * MONGO_URI =  *your mongoDB uri*
+  ```
+  PORT = <port number>
+  MONGO_URI =  <your mongoDB uri>
+  ```
 - Run the backend (Game/server)
   ``` bash
   npm install
   npm start
   ```
 - Change the api within Game/client/services/api.js
-  * const API_URL = "*your bakend localhost base url*";
+  ```
+  const API_URL = "<your backend localhost base url>";
+  ```
 - Run the frontend (Game/client)
   ``` bash
   npm install
