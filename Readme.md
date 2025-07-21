@@ -38,11 +38,17 @@ Option 2: Run in localhost
   * PORT = *port number*
   * MONGO_URI =  *your mongoDB uri*
 - Run the backend (Game/server)
-  *npm start*
+  ``` bash
+  npm install
+  npm start
+  ```
 - Change the api within Game/client/services/api.js
   * const API_URL = "*your bakend localhost base url*";
 - Run the frontend (Game/client)
-  *npm run dev*
+  ``` bash
+  npm install
+  npm run dev
+  ```
 
 <br>
 
