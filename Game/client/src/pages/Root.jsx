@@ -1,29 +1,34 @@
-import React, { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import { register, deleteUsers } from "../services/userService";
+import { register} from "../services/userService";
 import { addWord } from "../services/gameService";
 
 import { toast } from "react-toastify";
-// css
+
+import "../styles/Game.css";
 import "../styles/Root.css";
 
 export default function Root() {
     const [name, setName] = useState('');
     const navigate = useNavigate();
 
-    // Start the game
+    const [loading, setLoading] = useState(false);  
+    
     const startGame = useCallback(async (e) => {
         e.preventDefault();
 
         if (!name.trim()) {
-            toast.error("Enter a username first!");  // Set error message if name is empty
+            toast.error("Enter a username first!");
             return;
         }
 
         try {
+            setLoading(true); 
             const res = await register(name);
             if (typeof res === "string") {
-                alert(res); // Use `res` instead of `result` which doesn't exist
+                setLoading(false);
+                toast.error(res); 
+
             } else {
                 navigate('/game', { state: { id: res.msg } });
             }
@@ -33,7 +38,6 @@ export default function Root() {
         }
     }, [name, navigate]);
 
-    // Load additional words (only runs once on mount)
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -43,21 +47,36 @@ export default function Root() {
                 alert("An error occurred while adding words");
             }
         };
-
-        const clearUsers = async () => {
-            try {
-                const res = await deleteUsers();
-            } catch (error) {
-                console.error("Error during deleting users:", error);
-                alert("An error occurred while deleting users");
-            }
-        }
-
-        clearUsers();
         fetchData();
-    }, []); // Empty dependency array ensures this runs only once on mount
+    }, []); 
+
+if (loading) {
+        return (
+            <div className="loading-screen">
+                <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
+                    <div class="wheel"></div>
+                    <div class="hamster">
+                        <div class="hamster__body">
+                            <div class="hamster__head">
+                                <div class="hamster__ear"></div>
+                                <div class="hamster__eye"></div>
+                                <div class="hamster__nose"></div>
+                            </div>
+                            <div class="hamster__limb hamster__limb--fr"></div>
+                            <div class="hamster__limb hamster__limb--fl"></div>
+                            <div class="hamster__limb hamster__limb--br"></div>
+                            <div class="hamster__limb hamster__limb--bl"></div>
+                            <div class="hamster__tail"></div>
+                        </div>
+                    </div>
+                    <div class="spoke"></div>
+                </div>
+            </div>
+        );
+    }
 
     return (
+        
         <div>
             <div className="homepage-container">
                 {/* Main Homepage Image */}

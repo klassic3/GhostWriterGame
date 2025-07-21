@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "../styles/Game.css";
 import "../styles/Scene.css";
@@ -25,13 +25,12 @@ export default function Game() {
     const [score, setScore] = useState(0);
     const [gameOver, setGameOver] = useState(false);
 
-    const [loading, setLoading] = useState(true);  // Add a loading state
+    const [loading, setLoading] = useState(true);
     const [start, setStart] = useState(false);
 
     const ghostSpeed = 6;
     const inputRef2 = useRef(null);
 
-    // Fetch a new random word
     const fetchWord = useCallback(async () => {
         const randomWord = await getWord();
         setNextWord(randomWord);
@@ -50,7 +49,6 @@ export default function Game() {
         console.log("hello");
     }, []);
 
-    // Fetch word on initial load
     useEffect(() => {
         if (!userId) {
             navigate("/");
@@ -60,7 +58,6 @@ export default function Game() {
         }
     }, [fetchWord, navigate]);
 
-    // Handle word input submission
     const handleSubmit = async (e) => {
         e.preventDefault();
         const correctWord = word?.[0]?.word;
@@ -73,15 +70,13 @@ export default function Game() {
                 setStart(true);
             }
         }
-        setInputValue(""); // Clear input field
+        setInputValue("");
     };
 
-    // Handle input change
     const handleInputChange = (event) => {
         setInputValue(event.target.value);
     };
 
-    // Handle ghost movement and collision detection
     useEffect(() => {
         if (gameOver || !start) return;
 
@@ -97,7 +92,6 @@ export default function Game() {
             });
         }, 20);
 
-        // Collision detection
         const collisionInterval = setInterval(() => {
             const guyBottom = window.innerHeight - 50;
             const guyHeight = 50;
@@ -111,7 +105,7 @@ export default function Game() {
                     navigate("/gameover", { state: { id: userId, score: score } });
                 }
                 deleteGhost();
-                setLives((prevLife) => prevLife - 1); // Decrease life
+                setLives((prevLife) => prevLife - 1);
                 clearInterval(ghostInterval);
                 clearInterval(collisionInterval);
             }
@@ -123,12 +117,10 @@ export default function Game() {
         };
     }, [ghost, gameOver, lives, score, userId, navigate]);
 
-    // Function to delete the ghost
     const deleteGhost = () => {
         setGhost({ x: 800, height: Math.random() * 50 + 50 });
     };
 
-    // Lives component
     const Lives = ({ life }) => {
         return (
             <div className="imgcontainer">
@@ -144,7 +136,6 @@ export default function Game() {
         );
     };
 
-    // Show loading indicator if the word hasn't been fetched
     if (loading) {
         return (
             <div className="loading-screen">

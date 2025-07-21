@@ -1,9 +1,9 @@
-import React, { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { getTopScores } from "../services/userService";
 import '../styles/GameOver.css';
 
-// Icons for 1st, 2nd, and 3rd place
+
 import firstPlaceIcon from "/images/imortal.png";
 import secondPlaceIcon from "/images/diamond.png";
 import thirdPlaceIcon from "/images/gold.png";
@@ -12,7 +12,7 @@ export default function GameOver() {
     const location = useLocation();
     const navigate = useNavigate();
 
-    // Retrieve user ID from state
+
     const userId = location.state?.id;
 
     const score = location.state?.score;
@@ -25,7 +25,7 @@ export default function GameOver() {
         navigate('/');
     }
 
-    // Fetch top scores
+
     const fetchTopScores = useCallback(async () => {
         try {
             const res = await getTopScores();
@@ -37,16 +37,16 @@ export default function GameOver() {
         }
     }, []);
 
-    // Ensure that user ID is available before loading data
+
     useEffect(() => {
         if (!userId) {
-            navigate("/"); // Redirect if no user ID is found
+            navigate("/"); 
         } else {
             fetchTopScores();
         }
     }, [userId, fetchTopScores, navigate]);
 
-    // Show loading indicator if the word hasn't been fetched
+
     if (loading) {
         return (
             <div className="loading-screen">
