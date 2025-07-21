@@ -179,9 +179,7 @@ export default function Game() {
                     />
                 </form>
                 <div className="randomWord">
-                    {word?.map((randomword) => (
-                        <p key={randomword._id}>{randomword.word}</p>
-                    ))}
+                        <p >{word.word}</p>
                 </div>
             </div>
 

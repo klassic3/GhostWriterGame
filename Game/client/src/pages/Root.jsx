@@ -44,7 +44,6 @@ export default function Root() {
                 const res = await addWord();
             } catch (error) {
                 console.error("Error during adding words:", error);
-                alert("An error occurred while adding words");
             }
         };
         fetchData();
