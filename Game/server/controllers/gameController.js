@@ -1,10 +1,23 @@
 const Game = require('../models/Game.js');
 const words = require('../data/words.js');
+const crypto = require('crypto');
 
 // get random word
 const getWord = async (req, res) => {
-    const randomWord = await Game.aggregate([{ $sample: { size: 1 } }]);
-    res.status(200).json(randomWord);
+    try {
+        const count = await Game.countDocuments();
+
+        if (count === 0) {
+            return res.status(404).json({ message: "No words found." });
+        }
+
+        const randomIndex = await crypto.randomInt(0, count); // secure + fair
+        const randomWord = await Game.findOne().skip(randomIndex);
+
+        res.status(200).json(randomWord || {});
+    } catch (error) {
+        res.status(500).json({ message: "Error fetching random word", error });
+    }
 };
 
 //check if model empty
