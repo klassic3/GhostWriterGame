@@ -1,10 +1,10 @@
-🎮 Ghost Writer 👻
+## 🎮 Ghost Writer 👻
 
 A text based game made using the MERN stack.
 
 <br>
 
-📖 Table of Contents
+## 📖 Table of Contents
 - About
 - Gameplay
 - Installation
@@ -12,13 +12,13 @@ A text based game made using the MERN stack.
 
 <br>
 
-📌 About 
+## 📌 About 
 
 **Ghost Writer** is a text based game where you must type the word that appears on screen before the ghost reaches you. Designed using the MERN stack, the game is meant as a learning project for getting familiar with the technology suite.
 
 <br>
 
-🕹️ Gameplay
+## 🕹️ Gameplay
 - Enter a name to start the game.
 - Game starts as soon as you enter the first word (must press Enter key)
 - You get 3 lives before Game Over.
@@ -27,7 +27,7 @@ A text based game made using the MERN stack.
 
 <br>
 
-🚀 Installation
+## 🚀 Installation
 
 Option 1: Play the Web Build <br>
 👉 [**Play Now**](https://ghostwritergame.netlify.app/)
@@ -52,5 +52,5 @@ Option 2: Run in localhost
 
 <br>
 
-📄 License
+## 📄 License
 MIT ©  [**Chris Maharjan**](www.linkedin.com/in/chris-maharjan-4b2580283)
