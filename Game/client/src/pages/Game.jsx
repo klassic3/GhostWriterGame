@@ -46,7 +46,6 @@ export default function Game() {
         if (!word.length) {
             initialWord();
         }
-        console.log("hello");
     }, []);
 
     useEffect(() => {
@@ -60,7 +59,7 @@ export default function Game() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const correctWord = word?.[0]?.word;
+        const correctWord = word?.word;
         if (inputRef2.current.value === correctWord) {
             setWord(nextWord);
             fetchWord();
