@@ -5,7 +5,7 @@ const register = async (req, res) => {
     const { name } = req.body;
     console.log(name);
     try {
-        const newUser  = await User.create({name});
+        const newUser = await User.create({ name });
         res.json({ msg: newUser._id });
     } catch (error) {
         res.status(400).json({ error: error.message });
@@ -24,7 +24,7 @@ const update = async (req, res) => {
             ...req.body
         });
         res.json({ msg: "Update done" });
-        
+
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
@@ -94,11 +94,28 @@ const deleteUsers = async (req, res) => {
     }
 };
 
+const deleteUsersWithScoreZero = async (req, res) => {
+    try {
+        // Find users with score 0 and delete them
+        const result = await User.deleteMany({ score: 0 });
+        // const result = await User.deleteMany({ score: { $lt: 50 } });
+                // Check if users were deleted
+        if (result.deletedCount > 0) {
+            return res.status(200).json({ message: `${result.deletedCount} users with score 0 have been deleted.` });
+        } else {
+            return res.status(404).json({ message: 'No users with score 0 found.' });
+        }
+    } catch (error) {
+        return res.status(500).json({ message: 'Error deleting users with score 0', error });
+    }
+}
+
 module.exports = {
     register,
     update,
     deleteAll,
     getScore,
     getTop3Scores,
-    deleteUsers
+    deleteUsers,
+    deleteUsersWithScoreZero
 };

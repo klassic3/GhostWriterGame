@@ -58,3 +58,11 @@ Option 2: Run in localhost
 
 ## 📄 License
 MIT ©  [**Chris Maharjan**](www.linkedin.com/in/chris-maharjan-4b2580283)
+
+<br>
+
+## 📄 Credits
+Ghost image [Ossiron](https://ossiron.itch.io/pixel-ghost)
+Main character image [Otsoga](https://otsoga.itch.io/free-medieval-npcs-witch-and-swordswoman)
+Ranks [RhosGFX](https://rhosgfx.itch.io/vector-ranks)
+Haunted Library background [seeone](https://seeone.itch.io/haunted-library)

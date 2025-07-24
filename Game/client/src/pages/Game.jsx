@@ -21,7 +21,7 @@ export default function Game() {
     const [word, setWord] = useState([]);
     const [nextWord, setNextWord] = useState([]);
     const [inputValue, setInputValue] = useState("");
-    const [ghost, setGhost] = useState({ x: 800, height: 50 });
+    const [ghost, setGhost] = useState({ x: 800, height: 110,  padding: Math.random() * 30 + 10 });
     const [score, setScore] = useState(0);
     const [gameOver, setGameOver] = useState(false);
 
@@ -84,7 +84,7 @@ export default function Game() {
                 const newGhost = { ...prevGhost, x: prevGhost.x - ghostSpeed };
 
                 if (newGhost.x <= 0) {
-                    return { x: 800, height: Math.random() * 100 + 1000 };
+                    return { x: 800, height: Math.random() * 50 + 110, padding: Math.random() * 30 + 10 };
                 }
 
                 return newGhost;
@@ -196,6 +196,7 @@ export default function Game() {
                             style={{
                                 left: `${ghost.x}px`,
                                 height: `${ghost.height}px`,
+                                paddingBottom: `${ghost.padding}px`
                             }}
                         >
                             <img src={ghostimg} alt="ghost" className="ghost-img" />
