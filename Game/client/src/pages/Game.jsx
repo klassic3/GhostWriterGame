@@ -101,6 +101,7 @@ export default function Game() {
                 if (lives === 1) {
                     update(userId, score);
                     setGameOver(true);
+                    toast.error("You died!!")
                     navigate("/gameover", { state: { id: userId, score: score } });
                 }
                 deleteGhost();

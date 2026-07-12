@@ -3,7 +3,7 @@ import { REGISTER, SCORE, TOPSCORES, DELETEUSERS } from "./api";
 
 const register = async (name) => {
     try {
-        const response = await api.post(REGISTER, { name: name }); // Send an object { name: name }
+        const response = await api.post(REGISTER, { name: name });
         return response.data;
     } catch (error) {
         throw error;
@@ -13,7 +13,7 @@ const register = async (name) => {
 const update = async (id, score) => {
     try {
         const url = SCORE.replace(":id", id);
-        const response = await api.put(url, { score: score }); // Send an object { score: score }
+        const response = await api.put(url, { score: score });
         return response.data;
     } catch (error) {
         throw error;

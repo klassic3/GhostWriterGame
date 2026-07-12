@@ -18,7 +18,7 @@ export default function Root() {
         e.preventDefault();
 
         if (!name.trim()) {
-            toast.error("Enter a username first!");
+            toast.error("Enter a name to start!");
             return;
         }
 
@@ -96,7 +96,7 @@ if (loading) {
                             type="text"
                             name="username"
                             className="registerInput"
-                            placeholder="Enter your username"
+                            placeholder="Enter a name"
                             onChange={(e) => setName(e.target.value)}
                             value={name}
                             required
